@@ -800,7 +800,3 @@ the correctness or efficiency of the channel-routing mechanism itself, which is 
 4. Gao et al., *A Framework for Few-Shot Language Model Evaluation* (`lm-evaluation-harness`).
 
 ---
-
-## License
-
-*Specify the repository license here.*
