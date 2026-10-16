@@ -1,4 +1,4 @@
-# Hessian-Guided BFP2 Quantization Accelerator
+# Hessian-Guided BFP2 Quantization and Channel-Scatter Accelerator
 
 A hardware/software co-design for 2-bit block-floating-point (BFP2) neural-network inference, comprising a
 synthesizable SystemVerilog accelerator and a PyTorch evaluation suite.
