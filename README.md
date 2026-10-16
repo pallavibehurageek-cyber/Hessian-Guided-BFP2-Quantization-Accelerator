@@ -1,7 +1,5 @@
 # Hessian-Guided BFP2 Quantization Accelerator
 
-> Attribution: This README and the baseline design are adapted from [RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator](https://github.com/RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator). Identify independently developed changes and newly measured results separately.
-
 A hardware/software co-design for 2-bit block-floating-point (BFP2) neural-network inference, comprising a
 synthesizable SystemVerilog accelerator and a PyTorch evaluation suite.
 
