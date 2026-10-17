@@ -1,6 +1,6 @@
-# HAWQ Software Reference
+# Software implementation 
 
-This folder contains the software-side HAWQ quantization reference and supporting utilities. It is kept separate from the BFP2 SystemVerilog accelerator because HAWQ's original implementation provides PyTorch uniform and mixed-precision quantization workflows; it is **not** a BFP2 RTL implementation and is not wired into the accelerator testbench.
+This folder contains the software-side HAWQ quantization reference and supporting utilities. It is kept separate from the BFP2 SystemVerilog accelerator because here the original implementation provides PyTorch uniform and mixed-precision quantization workflows; it is **not** a BFP2 RTL implementation and is not wired into the accelerator testbench.
 
 ## Contents
 
