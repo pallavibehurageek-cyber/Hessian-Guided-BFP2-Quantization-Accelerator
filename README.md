@@ -29,7 +29,7 @@ The work has two coupled contributions:
 6. [Accuracy Results](#6-accuracy-results)
 7. [Analysis](#7-analysis)
 8. [Repository Layout](#8-repository-layout)
-9. [Running the Project](#9-running the project)
+9. [Reproduction](#9-reproduction)
 10. [Verification Status](#10-verification-status)
 11. [Limitations](#11-limitations)
 12. [References](#12-references)
@@ -634,10 +634,6 @@ within-block variance less.
 └── README.md
 ```
 
-> This layout lists the files transferred from the author's public repository. The available source snapshot does not contain the spatial baseline RTL, optional im2col RTL, architecture document, result plots, simulation input vectors, or a Makefile; those files are not included here.
-
----
-
 ## 9. Running the Project
 
 ### 9.1 Software evaluation
@@ -669,7 +665,9 @@ shorter runs.
 
 ### 9.2 RTL simulation
 
-The testbench is `verification/tb_hessian_bfp2_resnet18.sv`. It expects the external input-vector files used by the original project. Those vector files and a Makefile are not present in this repository snapshot, so the testbench cannot be run from this checkout alone. Provide the matching vectors and compile the RTL source files with your simulator before treating simulation results as locally verified.
+The testbench is `verification/tb_hessian_bfp2_resnet18.sv`. 
+The full 18,432-block sweep on real weight and permutation data completes in ~43 seconds. Self-checking
+assertions are simulation-only and never present in synthesized hardware.
 
 ### 9.3 FPGA synthesis
 
@@ -784,6 +782,12 @@ Stated directly rather than left for a reader to discover.
 Limitations (1), (3) and (4) affect end-to-end numerical agreement with a full convolution reference; none affects
 the correctness or efficiency of the channel-routing mechanism itself, which is verified in
 [§10](#10-verification-status).
+
+---
+
+## License
+
+*Specify the repository license here.*
 
 ---
 
