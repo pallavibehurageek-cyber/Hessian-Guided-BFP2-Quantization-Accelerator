@@ -634,7 +634,7 @@ within-block variance less.
 └── README.md
 ```
 
-## 9. Running the Project
+## 9. Reproduction
 
 ### 9.1 Software evaluation
 
