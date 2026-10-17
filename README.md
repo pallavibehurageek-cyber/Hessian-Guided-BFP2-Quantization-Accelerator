@@ -29,7 +29,7 @@ The work has two coupled contributions:
 6. [Accuracy Results](#6-accuracy-results)
 7. [Analysis](#7-analysis)
 8. [Repository Layout](#8-repository-layout)
-9. [Reproduction](#9-reproduction)
+9. [Running the Project](#9-running the project)
 10. [Verification Status](#10-verification-status)
 11. [Limitations](#11-limitations)
 12. [References](#12-references)
@@ -131,7 +131,7 @@ representable range.
 
 > **Decision-rule difference.** The software model performs a *joint* nearest-neighbour search over all 13 pair
 > states; the RTL encoder derives the level from each element's leading-bit position and reconciles the two. These
-> agree in the common case but are not the same function, so the hardware does not reproduce the software
+> agree in the common case but are not the same function, so the hardware does not run the software
 > accuracy figures exactly. The gap is not yet quantified — see [§11](#11-limitations). Earlier revisions of this
 > document described the software model as bit-exact with respect to the RTL; that claim was too strong and has
 > been withdrawn.
@@ -629,7 +629,7 @@ within-block variance less.
 ├── verification/                                     # Testbenches and assertion suites
 ├── docs/
 │   ├── kmeans_channel_scatter_architecture.md   # Full architecture paper
-│   └── plots/                              # Accuracy figures reproduced in this README
+│   └── plots/                              # Accuracy figures rund in this README
 ├── sw/
 │   └── hessian_bfp2_evaluation.py                # Full evaluation sweep
 └── README.md
@@ -637,7 +637,7 @@ within-block variance less.
 
 ---
 
-## 9. Reproduction
+## 9. Running the Project
 
 ### 9.1 Software evaluation
 
@@ -653,7 +653,7 @@ python sw/hessian_bfp2_evaluation.py \
 ```
 
 CIFAR-10 downloads on first run. The LLM phase is skipped gracefully if `transformers` and `lm-eval` are absent
-(`HAS_LLM_LIBS`), so the CNN sweep reproduces without Hugging Face access. Results are written to
+(`HAS_LLM_LIBS`), so the CNN sweep runs without Hugging Face access. Results are written to
 `bfp2_evaluation_results.txt` as `Models | Methods | Wbits | Param | Accuracy`, and to stdout as the run proceeds.
 
 | Flag | Default | Description |
@@ -684,7 +684,7 @@ load-time interface does not make the run I/O-bound.
 synth_design -top hessian_bfp2_accelerator_top -part xc7a200tfbg676-2 -mode out_of_context
 ```
 
-Two structural properties matter for reproducing the reported numbers:
+Two structural properties matter for running the reported numbers:
 
 * The 256 accumulators must infer **DSP48E1** slices. This requires a *synchronous* reset on the accumulator
   register — an asynchronous reset blocks inference entirely and the design falls back to 256 LUT carry chains,
