@@ -609,31 +609,32 @@ within-block variance less.
 
 ## 8. Repository Layout
 
-```
+```text
 .
 ├── rtl/
-│   ├── fp2_accelerator_top.sv              # 16x16 systolic grid, spatial-mode baseline
-│   ├── hessian_bfp2_accelerator_top.sv       # Channel-scatter engine (recommended)
-│   ├── weight_lane_channel_map.sv          #   pair -> output-channel metadata SRAM
-│   ├── channel_scatter_accumulator.sv      #   256-way comparator routing + accumulator pool
-│   ├── fp2_block_decode_wrapper.sv         # Unmodified FP2 decode
-│   ├── fp2_processing_element.sv           # Unmodified FP2 pair decode + K-factor multiply
-│   ├── temporal_accumulator.sv             # Unmodified dynamic-exponent-alignment accumulation
-│   └── im2col/                             # Per-element variant (~2-3x hardware cost)
-│       ├── hessian_bfp2_im2col_top.sv
-│       ├── fp2_element_product.sv
-│       ├── im2col_addr_gen.sv
-│       ├── weight_lane_element_map.sv
-│       ├── channel_router_im2col.sv
-│       └── activation_tile_snapshot.sv
-├── verification/                                     # Testbenches and assertion suites
-├── docs/
-│   ├── kmeans_channel_scatter_architecture.md   # Full architecture paper
-│   └── plots/                              # Accuracy figures rund in this README
+│   ├── activation_reorder_buffer.sv
+│   ├── channel_scatter_accumulator.sv
+│   ├── fp2_block_decode_wrapper.sv
+│   ├── hessian_bfp2_accelerator_top.sv
+│   ├── fp2_processing_element.sv
+│   ├── fp2_sram.sv
+│   ├── memory_address_router.sv
+│   ├── output_block_compactor.sv
+│   ├── output_compression_pairwise.sv
+│   ├── post_processing_unit.sv
+│   ├── temporal_accumulator.sv
+│   ├── weight_gather_ctrl.sv
+│   ├── weight_index_map_sram.sv
+│   └── weight_lane_channel_map.sv
+├── verification/
+│   └── tb_hessian_bfp2_resnet18.sv
 ├── sw/
-│   └── hessian_bfp2_evaluation.py                # Full evaluation sweep
+│   └── hessian_bfp2_evaluation.py
+├── .gitignore
 └── README.md
 ```
+
+> This layout lists the files transferred from the author's public repository. The available source snapshot does not contain the spatial baseline RTL, optional im2col RTL, architecture document, result plots, simulation input vectors, or a Makefile; those files are not included here.
 
 ---
 
@@ -668,12 +669,7 @@ shorter runs.
 
 ### 9.2 RTL simulation
 
-```bash
-make sim TOP=hessian_bfp2_accelerator_top
-```
-
-The full 18,432-block sweep on real weight and permutation data completes in ~43 seconds. Self-checking
-assertions are simulation-only and never present in synthesized hardware.
+The testbench is `verification/tb_hessian_bfp2_resnet18.sv`. It expects the external input-vector files used by the original project. Those vector files and a Makefile are not present in this repository snapshot, so the testbench cannot be run from this checkout alone. Provide the matching vectors and compile the RTL source files with your simulator before treating simulation results as locally verified.
 
 ### 9.3 FPGA synthesis
 
@@ -800,3 +796,9 @@ the correctness or efficiency of the channel-routing mechanism itself, which is 
 4. Gao et al., *A Framework for Few-Shot Language Model Evaluation* (`lm-evaluation-harness`).
 
 ---
+
+---
+
+## Source Attribution
+
+The RTL and Python evaluation files were transferred and renamed from [RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator](https://github.com/RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator) with the author's permission, as communicated by the repository owner. The top-level RTL module, testbench module, and evaluation output filename were updated to match this repository's naming.
