@@ -29,7 +29,7 @@ The work has two coupled contributions:
 6. [Accuracy Results](#6-accuracy-results)
 7. [Analysis](#7-analysis)
 8. [Repository Layout](#8-repository-layout)
-9. [running](#9-running)
+9. [Reproduction](#9-reproduction)
 10. [Verification Status](#10-verification-status)
 11. [Limitations](#11-limitations)
 12. [References](#12-references)
@@ -611,24 +611,30 @@ within-block variance less.
 
 ```text
 .
-├── rtl/                         # BFP2 accelerator RTL
-├── verification/                # RTL testbench
+├── rtl/
+│   ├── activation_reorder_buffer.sv
+│   ├── channel_scatter_accumulator.sv
+│   ├── fp2_block_decode_wrapper.sv
+│   ├── hessian_bfp2_accelerator_top.sv
+│   ├── fp2_processing_element.sv
+│   ├── fp2_sram.sv
+│   ├── memory_address_router.sv
+│   ├── output_block_compactor.sv
+│   ├── output_compression_pairwise.sv
+│   ├── post_processing_unit.sv
+│   ├── temporal_accumulator.sv
+│   ├── weight_gather_ctrl.sv
+│   ├── weight_index_map_sram.sv
+│   └── weight_lane_channel_map.sv
+├── verification/
+│   └── tb_hessian_bfp2_resnet18.sv
 ├── sw/
-│   ├── hessian_bfp2_evaluation.py
-│   └── hawq_reference/           # Separate PyTorch quantization reference
-│       ├── quant_train.py
-│       ├── bit_config.py
-│       ├── utils/
-│       ├── model_zoo.md
-│       ├── requirements.txt
-│       └── LICENSE
+│   └── hessian_bfp2_evaluation.py
 ├── .gitignore
 └── README.md
 ```
 
-
-
-## 9. running
+## 9. Reproduction
 
 ### 9.1 Software evaluation
 
