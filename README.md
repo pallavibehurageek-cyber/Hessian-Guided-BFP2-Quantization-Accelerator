@@ -624,12 +624,6 @@ within-block variance less.
 │       └── LICENSE
 ├── .gitignore
 └── README.md
-```
-
-### HAWQ software reference
-
-The `sw/hawq_reference/` directory contains HAWQ's software-side quantization workflow and supporting utilities. It is kept separate from the BFP2 RTL: these files provide PyTorch uniform/mixed-precision quantization reference code, not a BFP2 hardware implementation. The HAWQ code is not connected to the RTL testbench, and no conversion to the accelerator's BFP2 format has been implemented by adding these files. See [`sw/hawq_reference/README.md`](sw/hawq_reference/README.md) for scope and environment notes.
-
 
 ## 9. running
 
@@ -797,9 +791,3 @@ the correctness or efficiency of the channel-routing mechanism itself, which is 
 4. Gao et al., *A Framework for Few-Shot Language Model Evaluation* (`lm-evaluation-harness`).
 
 ---
-
----
-
-## Source Attribution
-
-The RTL and Python evaluation files were transferred and renamed from [RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator](https://github.com/RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator) with the repository owner's permission. The top-level RTL module, testbench module, and evaluation output filename were updated to match this repository's naming.
