@@ -796,9 +796,3 @@ the correctness or efficiency of the channel-routing mechanism itself, which is 
 4. Gao et al., *A Framework for Few-Shot Language Model Evaluation* (`lm-evaluation-harness`).
 
 ---
-
----
-
-## Source Attribution
-
-The RTL and Python evaluation files were transferred and renamed from [RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator](https://github.com/RohanCoderiiitb/Hessian-Aware-BFP2-Accelerator) with the author's permission, as communicated by the repository owner. The top-level RTL module, testbench module, and evaluation output filename were updated to match this repository's naming.
