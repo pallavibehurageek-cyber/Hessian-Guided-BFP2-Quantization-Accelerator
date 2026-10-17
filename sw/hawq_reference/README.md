@@ -21,8 +21,3 @@ Use an isolated Python environment for this reference code. Install the dependen
 
 Run commands from this directory so the original imports such as `from bit_config import *` and `from utils import *` resolve correctly. Consult `model_zoo.md` for the original training configurations and dataset requirements.
 
-## Relationship to the BFP2 accelerator
-
-This is a separate software reference for Hessian-aware and mixed-precision quantization concepts. No conversion to the accelerator's BFP2 format, RTL interface, or bit-accurate hardware validation has been implemented by adding these files. Results from this reference must not be presented as results produced by the BFP2 accelerator.
-
-The included `LICENSE` preserves the license notice supplied with the HAWQ source.
